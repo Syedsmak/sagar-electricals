@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sagar Electricals Kushtagi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --bg: #F1F4F3;
+  --surface: #FFFFFF;
+  --fg: #12211F;
+  --muted: #4B5C59;
+  --line: #D3DBD9;
+  --accent: #0B6E5F;
+  --accent-fg: #FFFFFF;
+  --highlight: #E0A526;
+  --tile-a: #DCE6E3;
+  --tile-b: #CBD9D5;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0D1715; --surface: #14231F; --fg: #E6EFEC; --muted: #9DB1AC; --line: #26382F;
+    --accent: #3FBFA8; --accent-fg: #06201B; --highlight: #E9B73F; --tile-a: #1B2F2A; --tile-b: #22392F;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+a { color: inherit; }
+img { max-width: 100%; }
+:focus-visible { outline: 3px solid var(--highlight); outline-offset: 2px; border-radius: 4px; }
+.wrap { max-width: 1040px; margin: 0 auto; }
+
+/* top bar */
+.bar {
+  position: sticky; top: 0; z-index: 5;
+  background: var(--surface); border-bottom: 1px solid var(--line);
+  margin-left: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  margin-right: calc(-1 * max(16px, env(safe-area-inset-right, 0px)));
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 10px; }
+.brand { font-family: var(--font-display); font-weight: 800; font-size: 1.15rem; letter-spacing: -0.01em; text-decoration: none; white-space: nowrap; }
+.brand span { color: var(--accent); }
+nav { display: flex; gap: 4px; overflow-x: auto; min-width: 0; scrollbar-width: none; }
+nav::-webkit-scrollbar { display: none; }
+nav a { text-decoration: none; font-weight: 500; font-size: 0.92rem; padding: 6px 12px; border-radius: 999px; white-space: nowrap; color: var(--muted); }
+nav a:hover { background: var(--bg); color: var(--fg); }
+
+/* hero */
+.hero { padding-block: 48px; display: grid; grid-template-columns: 1.15fr 1fr; gap: 36px; align-items: center; }
+.hero-text { display: grid; gap: 24px; min-width: 0; }
+.eyebrow { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0; }
+h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(2.2rem, 7vw, 4rem); line-height: 1.04; letter-spacing: -0.03em; margin: 0; text-wrap: balance; }
+h1 mark { background: none; color: var(--accent); }
+.lede { font-size: 1.1rem; color: var(--muted); max-width: 50ch; margin: 0; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer;
+  font: 600 0.98rem var(--font-body); padding: 12px 20px; border-radius: 10px;
+  border: 1.5px solid var(--accent); background: var(--accent); color: var(--accent-fg);
+}
+.btn.ghost { background: transparent; color: var(--fg); border-color: var(--line); }
+.btn:hover { filter: brightness(1.08); }
+.btn.ghost:hover { border-color: var(--accent); filter: none; }
+.hero-img { margin: 0; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); aspect-ratio: 4 / 5; max-width: 100%; background: var(--tile-a); }
+.hero-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* sections */
+section { padding-block: 48px; border-top: 1px solid var(--line); }
+h2 { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.7rem, 4.5vw, 2.4rem); letter-spacing: -0.02em; line-height: 1.1; margin: 0 0 8px; text-wrap: balance; }
+.sub { color: var(--muted); margin: 0 0 28px; max-width: 56ch; }
+
+/* about */
+.about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 32px; align-items: start; }
+.about-grid p { margin: 0 0 14px; max-width: 62ch; }
+.facts { display: grid; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; margin: 0; }
+.facts div { display: flex; justify-content: space-between; gap: 16px; padding: 14px 18px; border-bottom: 1px solid var(--line); }
+.facts div:last-child { border-bottom: 0; }
+.facts dt { color: var(--muted); font-size: 0.9rem; }
+.facts dd { margin: 0; font-weight: 600; text-align: right; }
+
+/* what we do */
+.make { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.make article { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px; min-width: 0; }
+.make h3 { font-family: var(--font-display); font-size: 1.15rem; margin: 0 0 6px; }
+.make p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+.make .tag { font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; display: block; margin-bottom: 10px; }
+.note { margin-top: 16px; padding: 14px 18px; border-left: 4px solid var(--highlight); background: var(--surface); border-radius: 8px; font-weight: 500; }
+
+/* photos */
+.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.shot { margin: 0; aspect-ratio: 3 / 4; max-width: 100%; border-radius: 12px; overflow: hidden; position: relative; border: 1px solid var(--line); background: var(--tile-a); }
+.shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.shot figcaption {
+  position: absolute; left: 10px; bottom: 10px; right: 10px;
+  background: var(--surface); color: var(--fg); border-radius: 8px; padding: 8px 12px;
+  font-size: 0.9rem; font-weight: 500;
+}
+
+/* map */
+.map-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; align-items: stretch; }
+.map { min-width: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--tile-a); min-height: 340px; position: relative; }
+.map svg { width: 100%; height: 100%; display: block; }
+.map .road { stroke: var(--surface); fill: none; stroke-linecap: round; }
+.map .minor { stroke-width: 7; }
+.map .major { stroke-width: 14; }
+.map .bld { fill: var(--surface); stroke: var(--line); stroke-width: 1.5; }
+.map .pin-dot { fill: var(--accent); stroke: var(--surface); stroke-width: 3; }
+.map .pin-ring { fill: var(--accent); opacity: 0.2; }
+.map .label { font: 500 10.5px var(--font-mono); fill: var(--muted); letter-spacing: 0.04em; }
+.map .shop-label { font: 700 13px var(--font-body); fill: var(--fg); }
+.map .scale { font: 500 10px var(--font-mono); fill: var(--muted); }
+.addr { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.addr h3 { font-family: var(--font-display); font-size: 1.15rem; margin: 0; }
+.addr address { font-style: normal; font-family: var(--font-mono); font-size: 0.92rem; line-height: 1.6; overflow-wrap: anywhere; }
+.addr .btns { display: flex; flex-wrap: wrap; gap: 10px; }
+.addr .btn { padding: 10px 16px; font-size: 0.92rem; }
+.copied { font-size: 0.85rem; color: var(--accent); min-height: 1.2em; margin: 0; }
+.landmarks { margin: 0; padding-left: 18px; color: var(--muted); font-size: 0.95rem; }
+
+/* footer */
+footer { border-top: 1px solid var(--line); padding-block: 40px 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+footer h3 { font-family: var(--font-display); font-size: 1.05rem; margin: 0 0 10px; }
+footer p { margin: 0 0 6px; }
+.mono { font-family: var(--font-mono); font-size: 0.92rem; }
+.copy { grid-column: 1 / -1; color: var(--muted); font-size: 0.85rem; padding-top: 18px; border-top: 1px solid var(--line); }
+
+@media (max-width: 760px) {
+  .hero, .about-grid, .map-grid, footer { grid-template-columns: 1fr; }
+  .hero { padding-block: 32px; gap: 24px; }
+  .hero-img { aspect-ratio: 4 / 3; }
+  section { padding-block: 36px; }
+  .map { min-height: 280px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#top">Sagar <span>Electricals</span></a>
+    <nav aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#make">What we do</a>
+      <a href="#photos">Photos</a>
+      <a href="#map">Map &amp; directions</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+  <div class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">Kushtagi · Koppal · 583277</p>
+      <h1>Motor rewinding and repair in <mark>Kushtagi</mark>.</h1>
+      <p class="lede">We rewind motors and change motor parts. From 1 HP to 10 HP motors and large mixer grinder motors, bring it to our shop and we will make it run again.</p>
+      <div class="cta-row">
+        <a class="btn" href="tel:+919945210767">Call +91 99452 10767</a>
+        <a class="btn ghost" href="#map">Get directions</a>
+      </div>
+    </div>
+    <figure class="hero-img"><img src="shop-front.jpg" alt="Sagar Electricals shop front in Kushtagi" width="900" height="1200"></figure>
+  </div>
+
+  <section id="about">
+    <h2>About our shop</h2>
+    <p class="sub">Who we are and what we repair.</p>
+    <div class="about-grid">
+      <div>
+        <p>Sagar Electricals is a motor repair shop in Kushtagi. We rewind electric motors and change worn or damaged motor parts, so your motor works properly again.</p>
+        <p>We repair small 1 HP motors, 5 HP and 10 HP motors, and large mixer grinder motors. We work on all types of motors except borewell motors.</p>
+        <p>Bring your motor to the shop. We will check it and explain what work it needs.</p>
+      </div>
+      <dl class="facts">
+        <div><dt>Main work</dt><dd>Motor rewinding</dd></div>
+        <div><dt>Motor size</dt><dd>1 HP to 10 HP</dd></div>
+        <div><dt>Also</dt><dd>Mixer grinder motors</dd></div>
+        <div><dt>Not repaired</dt><dd>Borewell motors</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="make">
+    <h2>What we do</h2>
+    <p class="sub">Our main jobs. If you are not sure whether we can repair your motor, call us.</p>
+    <div class="make">
+      <article><span class="tag">Rewinding</span><h3>Motor rewinding</h3><p>We rewind the coils of burnt or weak motors so they run again.</p></article>
+      <article><span class="tag">Parts</span><h3>Changing motor parts</h3><p>Worn or damaged motor parts are changed so the motor works properly.</p></article>
+      <article><span class="tag">1 HP · 5 HP · 10 HP</span><h3>Motors up to 10 HP</h3><p>We handle small and medium motors from 1 HP to 10 HP.</p></article>
+      <article><span class="tag">Large</span><h3>Mixer grinder motors</h3><p>Rewinding and repair for large mixer grinder motors.</p></article>
+    </div>
+    <p class="note">We repair all types of motors except borewell motors.</p>
+  </section>
+
+  <section id="photos">
+    <h2>Photos</h2>
+    <p class="sub">Our shop and workshop in Kushtagi.</p>
+    <div class="gallery">
+      <figure class="shot"><img src="shop-front.jpg" alt="Shop front with blue doors" loading="lazy" width="900" height="1200"><figcaption>Our shop front</figcaption></figure>
+      <figure class="shot"><img src="inside-workshop.jpg" alt="Inside the workshop with motors and spare parts" loading="lazy" width="900" height="1200"><figcaption>Inside the workshop: motors and spares</figcaption></figure>
+      <figure class="shot"><img src="shop-street.jpg" alt="Sagar Electricals seen from the street" loading="lazy" width="900" height="1200"><figcaption>Our shop from the road</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="map">
+    <h2>Map &amp; directions</h2>
+    <p class="sub">Find us on Google Maps and get directions from wherever you are.</p>
+    <div class="map-grid">
+      <div class="map" role="img" aria-label="Sketch map: the shop is near Vidya Nagar School, opposite Kondkur Jewellers">
+        <svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="400" fill="var(--tile-a)"/>
+          <path class="road major" d="M-20 215 L640 195"/>
+          <path class="road major" d="M280 -20 L310 420"/>
+          <path class="road minor" d="M-20 100 L640 85"/>
+          <path class="road minor" d="M-20 320 L640 305"/>
+          <path class="road minor" d="M110 -20 L130 420"/>
+          <path class="road minor" d="M480 -20 L465 420"/>
+          <rect class="bld" x="40" y="236" width="150" height="62" rx="6"/>
+          <text class="label" x="52" y="271">VIDYA NAGAR SCHOOL</text>
+          <rect class="bld" x="350" y="120" width="140" height="56" rx="6"/>
+          <text class="label" x="360" y="153">KONDKUR JEWELLERS</text>
+          <g transform="translate(375 232)">
+            <circle class="pin-ring" r="30"/>
+            <circle class="pin-dot" r="10"/>
+          </g>
+          <text class="shop-label" x="342" y="283">Sagar Electricals</text>
+          <text class="scale" x="16" y="388">Sketch map, not to scale</text>
+        </svg>
+      </div>
+      <div class="addr">
+        <h3>Visit us</h3>
+        <address id="address-text">Sagar Electricals<br>Near Vidya Nagar School,<br>opposite Kondkur Jewellers,<br>Kushtagi, Koppal, Karnataka 583277</address>
+        <ul class="landmarks">
+          <li>Near Vidya Nagar School</li>
+          <li>Opposite Kondkur Jewellers</li>
+        </ul>
+        <div class="btns">
+          <a class="btn" id="dir-link" href="https://www.google.com/maps/dir/?api=1&destination=Kushtagi" target="_blank" rel="noopener">Get directions</a>
+          <a class="btn ghost" id="open-link" href="https://www.google.com/maps/search/?api=1&query=Kushtagi" target="_blank" rel="noopener">Open in Google Maps</a>
+          <button class="btn ghost" id="copy-btn" type="button">Copy address</button>
+        </div>
+        <p class="copied" id="copied" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div>
+    <h3>Shop timings</h3>
+    <p>Call us to confirm when the shop is open.</p>
+  </div>
+  <div>
+    <h3>Contact</h3>
+    <p>Phone: <a class="mono" href="tel:+919945210767">+91 99452 10767</a></p>
+    <p>Sagar Electricals, Kushtagi 583277</p>
+  </div>
+  <div class="copy">© Sagar Electricals Kushtagi. All rights reserved.</div>
+</footer>
+
+<script>
+(function () {
+  // Change this line to your exact address; the Google Maps buttons update from it.
+  var ADDRESS = "Sagar Electricals, near Vidya Nagar School, opposite Kondkur Jewellers, Kushtagi, Koppal, Karnataka 583277";
+  var q = encodeURIComponent(ADDRESS);
+  document.getElementById("dir-link").href = "https://www.google.com/maps/dir/?api=1&destination=" + q;
+  document.getElementById("open-link").href = "https://www.google.com/maps/search/?api=1&query=" + q;
+
+  var btn = document.getElementById("copy-btn");
+  var note = document.getElementById("copied");
+  btn.addEventListener("click", function () {
+    var el = document.getElementById("address-text");
+    var text = el.innerText;
+    function manual() {
+      var r = document.createRange(); r.selectNodeContents(el);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      note.textContent = "Select the address above to copy it.";
+    }
+    try {
+      navigator.clipboard.writeText(text).then(function () { note.textContent = "Address copied."; }, manual);
+    } catch (e) { manual(); }
+  });
+})();
+</script>
+</body>
+</html>
